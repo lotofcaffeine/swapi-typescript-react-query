@@ -4,9 +4,11 @@ Web catalog of Star Wars Characters, using the data provided by [The Star Wars A
 The components were built using [Storybook](https://storybook.js.org/) and they are styled using [styled components](https://styled-components.com/), the data retrieval logic was implemented using [axios](https://github.com/axios/axios) to fetch the data and [React Query](https://react-query.tanstack.com/) to cache and update the data.
 There are different levels of automated tests built using [Jest](https://jestjs.io/).
 
+You can visit a live version of the application [here](https://swapi-typescript.vercel.app/).
+
 ## Data Loading and Caching
 
-The app consists of two pages: 
+The app consists of two pages:
 
 - The main one that renders in the root route `/`; it shows the main list of characters.
 - The character details page that renders in the `/[id]` route (where id is the ID of the character); it shows the character information. It also performs new requests to retrieve homeworld, vehicles, starships, species and films of the character.
@@ -64,6 +66,8 @@ yarn storybook
 ```sh
 build-storybook
 ```
+
+You can visit a live version of the Storybook [here](https://lotofcaffeine.github.io/swapi-typescript)
 
 ## Architecture
 
