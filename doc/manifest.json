@@ -1,0 +1,22 @@
+{
+  "name": "SWAPI and Next",
+  "short_name": "Swapi",
+    "icons": [
+        {
+            "src": "/img/favicons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/favicons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#06092B",
+    "start_url": "/",
+    "background_color": "#faf9f9",
+    "description": "Project to integrate swapi and next",
+    "display": "fullscreen"
+}
+

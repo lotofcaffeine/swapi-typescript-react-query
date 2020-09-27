@@ -1,0 +1,7 @@
+.storybook
+.jest
+.next
+.vscode
+coverage
+generators
+public

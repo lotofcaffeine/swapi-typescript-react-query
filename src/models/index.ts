@@ -1,0 +1,7 @@
+export * from './Character'
+export * from './Film'
+export * from './Specie'
+export * from './Vehicle'
+export * from './Starship'
+export * from './Planet'
+export * from './Resource'
