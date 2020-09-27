@@ -1,5 +1,5 @@
 import { Character, Resource } from 'models'
-import { InfiniteQueryResult, QueryResult } from 'react-query'
+import { QueryResult } from 'react-query'
 
 export interface CharactersListPage {
   results: Character[]
@@ -11,7 +11,16 @@ export interface CharactersQueryHookConfig {
   initialPage?: CharactersListPage
 }
 
-export type CharactersQueryHookResult = Pick<InfiniteQueryResult<Character>, 'data' | 'fetchMore' | 'isLoading' | 'isFetching' | 'isError' | 'isSuccess' | 'canFetchMore' | 'isFetchingMore' | 'error'>
+export interface CharactersQueryHookResult {
+  data?: Character[]
+  fetchMore: () => void
+  isLoading: boolean
+  isFetching: boolean
+  isSuccess: boolean
+  isError: boolean
+  canFetchMore?: boolean
+  isFetchingMore?: string | boolean
+}
 
 export interface ResourceQueryHookConfig<T extends Resource> {
   initialData?: T

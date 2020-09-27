@@ -1,6 +1,5 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ReactQueryDevtools } from 'react-query-devtools'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
@@ -11,7 +10,6 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={theme}>
-
         <Head>
           <meta charSet="utf-8"/>
           <meta content="IE=edge" httpEquiv="X-UA-Compatible"/>
@@ -31,7 +29,6 @@ function App({ Component, pageProps }: AppProps) {
         <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen />
     </>
   )
 }
