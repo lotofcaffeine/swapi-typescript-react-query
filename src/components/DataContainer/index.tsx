@@ -12,7 +12,7 @@ const DataContainer = ({ items }: DataContainerProps) => (
   <S.Wrapper>
     {items?.map((item: Character) => (
       <Card as="li" key={item.name}>
-        <Link href={`/${item.id}`}>
+        <Link href={`/character/${item.id}`}>
           <a>{item.name}</a>
         </Link>
       </Card>

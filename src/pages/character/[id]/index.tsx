@@ -1,27 +1,35 @@
 
 import { useResourceQueryById } from 'lib/SwReactQuery'
 import { useRouter } from 'next/router'
-import { Character } from '../models'
+import { Character } from '../../../models'
 import ViewContainer from 'components/ViewContainer'
 import Heading from 'components/Heading'
 import CharacterLoader from "components/CharacterLoader"
 import ResourceCard from "components/ResourceCard"
 import ResourceList from "components/ResourceList"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from "components/Button"
 
 export default function CharacterPage() {
   const router = useRouter()
-  const { id } = router.query
+  const { id } = useRouter().query
+
+  const [state, setState] = useState('');
   const { isLoading, data } = useResourceQueryById<Character>(
-    id as string,
+    state as string,
     'people', {
-      enabled: !!id
+      enabled: !!state,
     }
   )
+  useEffect(() => {
+    if(id) {
+      setState(id as string)
+    }
+  }, [id])
   if(!id){
     return null;
   }
+
   return (
     <ViewContainer>
       {isLoading ? (
