@@ -34,5 +34,5 @@ export const fetchResourceById: ResourceFetcherById = async <T>(
   type: string
 ) => {
   const url = `https://swapi.dev/api/${type}/${id}`
-  return fetchResource<T>(url)
+  return fetchResource<T>(sanitizeUrl(url))
 }

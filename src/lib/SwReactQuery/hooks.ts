@@ -11,9 +11,10 @@ import {
 } from 'lib/SwApi'
 import { queryCache, useInfiniteQuery, useQuery } from 'react-query'
 import { Character, Resource } from 'models'
-import { urlToIdAndType } from 'lib/utils'
+import { sanitizeUrl, urlToIdAndType } from 'lib/utils'
 
 const fetchInfiniteCharacterList = async (_: string, url: string) => {
+  url = sanitizeUrl(url)
   return fetchCharacterList(url)
 }
 
@@ -79,6 +80,7 @@ export const useResourceQuery = <T extends Resource>(
   url: string,
   queryConfig?: ResourceQueryHookConfig<T>
 ): ResourceQueryHookResult<T> => {
+  url = sanitizeUrl(url)
   const [id, type] = urlToIdAndType(url)
   const { data, ...rest } = useQuery(
     [type, id],
