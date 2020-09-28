@@ -1,7 +1,7 @@
 
 import { useResourceQueryById } from 'lib/SwReactQuery'
 import { useRouter } from 'next/router'
-import { Character } from '../../../models'
+import { Character } from 'models'
 import ViewContainer from 'components/ViewContainer'
 import Heading from 'components/Heading'
 import CharacterLoader from "components/CharacterLoader"
@@ -12,8 +12,7 @@ import Button from "components/Button"
 
 export default function CharacterPage() {
   const router = useRouter()
-  const { id } = useRouter().query
-
+  const { id } = router.query
   const [state, setState] = useState('');
   const { isLoading, data } = useResourceQueryById<Character>(
     state as string,
@@ -22,10 +21,12 @@ export default function CharacterPage() {
     }
   )
   useEffect(() => {
+
     if(id) {
       setState(id as string)
     }
-  }, [id])
+  }, [id, state])
+
   if(!id){
     return null;
   }
