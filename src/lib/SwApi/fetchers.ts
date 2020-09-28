@@ -13,12 +13,7 @@ export const fetchCharacterList: CharacterListFetcher = async (
 ) => {
 
   url = sanitizeUrl(url)
-  const resp = await axios.get(url,{
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": true,
-        "Access-Control-Allow-Credentials": true
-    }})
+  const resp = await axios.get(url)
   const data = resp.data
   data.results = data.results?.map((char: Character) => {
     const [id, type] = urlToIdAndType(url)
@@ -31,12 +26,7 @@ export const fetchCharacterList: CharacterListFetcher = async (
 
 export const fetchResource: ResourceFetcher = async <T>(url: string) => {
 
-  const resp = await axios.get(sanitizeUrl(url),{
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": true,
-        "Access-Control-Allow-Credentials": true
-    }})
+  const resp = await axios.get(sanitizeUrl(url))
   const data = resp.data
   return data as T
 }
