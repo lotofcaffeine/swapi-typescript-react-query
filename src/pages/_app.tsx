@@ -13,6 +13,7 @@ function App({ Component, pageProps }: AppProps) {
         <Head>
           <meta charSet="utf-8"/>
           <meta content="IE=edge" httpEquiv="X-UA-Compatible"/>
+          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
           <meta content="width=device-width, initial-scale=1" name="viewport"/>
           <link rel="shortcut icon" href="/img/favicons/apple-touch-icon.png" />
           <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png"/>
