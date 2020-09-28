@@ -11,7 +11,7 @@ You can visit a live version of the application [here](https://swapi-typescript.
 The app consists of two pages:
 
 - The main one that renders in the root route `/`; it shows the main list of characters.
-- The character details page that renders in the `/[id]` route (where id is the ID of the character); it shows the character information. It also performs new requests to retrieve homeworld, vehicles, starships, species and films of the character.
+- The character details page that renders in the `/characters/[id]` route (where id is the ID of the character); it shows the character information. It also performs new requests to retrieve homeworld, vehicles, starships, species and films of the character.
 
 The app uses Next.js `getServerSideProps` function to load the first _page_ of characters on the server-side, so the whole initial page is statically rendered. The characters' information already retrieved on the main page is cached, so most of the information is already available when entering a character details page. Movies, species, starships, planets and vehicle data are also cached after the first retrieval.
 
