@@ -15,7 +15,6 @@ const ResourceCard = ({children, title}:ResourceCardProps) => (
      <S.ResourceChildren>
      {children}
      </S.ResourceChildren>
-
     </Card>
   </S.Wrapper>
 )

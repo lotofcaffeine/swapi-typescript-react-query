@@ -1,5 +1,4 @@
 
-import { useResourceQueryById } from 'lib/SwReactQuery'
 import { useRouter } from 'next/router'
 import { Character } from 'models'
 import ViewContainer from 'components/ViewContainer'
@@ -7,35 +6,18 @@ import Heading from 'components/Heading'
 import CharacterLoader from "components/CharacterLoader"
 import ResourceCard from "components/ResourceCard"
 import ResourceList from "components/ResourceList"
-import React, { useEffect, useState } from 'react'
+import React  from 'react'
 import Button from "components/Button"
+import { fetchResourceById } from 'lib/SwApi'
 
-export default function CharacterPage() {
+
+export default function CharacterPage({data}:{data:Character}) {
   const router = useRouter()
-  const { id } = router.query
-  const [state, setState] = useState('');
-  const { isLoading, data } = useResourceQueryById<Character>(
-    state as string,
-    'people', {
-      enabled: !!state,
-    }
-  )
-  useEffect(() => {
-
-    if(id) {
-      setState(id as string)
-    }
-  }, [id, state])
-
-  if(!id){
-    return null;
-  }
-
+  if(router.isFallback)
+    return <p>Loading...</p>
   return (
     <ViewContainer>
-      {isLoading ? (
-       <Heading as="h1">Loading</Heading>
-      ) : (
+
         <>
         <Heading as="h1" size="medium" lineBottom>{data?.name}</Heading>
         <ResourceCard title="Attributes">
@@ -60,10 +42,32 @@ export default function CharacterPage() {
           <div>
           <Button onClick={() => router.back()}>Go back</Button>
           </div>
-
         </>
-      )}
 
     </ViewContainer>
   )
 }
+
+export async function getStaticPaths(){
+
+  const array = Array.from(Array(10).keys())
+  const paths  =  array.map(id=>{
+   return {params: {id: `${id+1}`}}
+  })
+
+  return{
+    paths,
+    fallback:true
+  }
+}
+
+export async function getStaticProps(context:{params:{id:string}}) {
+
+      const {id} = context.params
+      const data = await fetchResourceById<Character>(id, "people")
+
+  return{
+     props: { data }
+  }
+}
+
