@@ -1,4 +1,3 @@
-
 import { useResourceQueryById } from 'lib/SwReactQuery'
 import { useRouter } from 'next/router'
 import { Character } from 'models'
@@ -16,28 +15,16 @@ export default function CharacterPage() {
   const { isLoading, data , isError} = useResourceQueryById<Character>(
     id as string,
     'people', {
-      enabled: !!id && Number.isInteger(id),
+      enabled: !!id && Number.isInteger(Number(id)),
     }
   )
-  console.log(isLoading, data, isError, "caralho")
-  // useEffect(() => {
+  if(!id) {
+    return null
+  }
 
-  //   if(id && Number.isInteger(id)) {
-  //     setState(id as string)
-  //   }
-  // }, [id, state])
-
-  // if(!id){
-  //   return null;
-  // }
-  //  console.log("id", id)
-  //  console.log("Number.isInteger", !Number.isInteger(id) )
-  //  console.log(" Number(id) > 83",  Number(id) > 83)
-  // if(isError || !(Number.isInteger(id))){
-  //   console.log("entrou aqi")
-  //   console.log(isError)
-  //  router.push("/404")
-  // }
+  if((typeof window !== 'undefined') && (isError || (!(Number.isInteger(Number(id)))))){
+    router.push("/404")
+  }
 
   return (
     <ViewContainer>
