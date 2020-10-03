@@ -7,34 +7,37 @@ import Heading from 'components/Heading'
 import CharacterLoader from "components/CharacterLoader"
 import ResourceCard from "components/ResourceCard"
 import ResourceList from "components/ResourceList"
-import React, { useEffect, useState } from 'react'
+import React  from 'react'
 import Button from "components/Button"
 
 export default function CharacterPage() {
   const router = useRouter()
   const { id } = router.query
-  const [state, setState] = useState('');
   const { isLoading, data , isError} = useResourceQueryById<Character>(
-    state as string,
+    id as string,
     'people', {
-      enabled: !!state,
+      enabled: !!id && Number.isInteger(id),
     }
   )
-  useEffect(() => {
+  console.log(isLoading, data, isError, "caralho")
+  // useEffect(() => {
 
-    if(id) {
-      setState(id as string)
-    }
-  }, [id, state])
+  //   if(id && Number.isInteger(id)) {
+  //     setState(id as string)
+  //   }
+  // }, [id, state])
 
-  if(!id){
-    return null;
-  }
-
-  if(isError){
-    console.log(isError)
-   router.push("/404")
-  }
+  // if(!id){
+  //   return null;
+  // }
+  //  console.log("id", id)
+  //  console.log("Number.isInteger", !Number.isInteger(id) )
+  //  console.log(" Number(id) > 83",  Number(id) > 83)
+  // if(isError || !(Number.isInteger(id))){
+  //   console.log("entrou aqi")
+  //   console.log(isError)
+  //  router.push("/404")
+  // }
 
   return (
     <ViewContainer>

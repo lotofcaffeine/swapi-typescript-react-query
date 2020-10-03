@@ -1,5 +1,4 @@
 import { Character, Resource } from 'models'
-import { QueryResult } from 'react-query'
 
 export interface CharactersListPage {
   results: Character[]
@@ -27,4 +26,10 @@ export interface ResourceQueryHookConfig<T extends Resource> {
   enabled?: boolean
 }
 
-export type ResourceQueryHookResult<T extends Resource> = Pick<QueryResult<T>, 'data' | 'isLoading' | 'isFetching' | 'isError' | 'isSuccess' | 'error'>
+export interface ResourceQueryHookResult<T extends Resource> {
+  data?: T
+  isLoading: boolean
+  isFetching: boolean
+  isError: boolean
+  isSuccess: boolean
+}

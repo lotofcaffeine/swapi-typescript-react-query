@@ -14,7 +14,9 @@ export const fetchCharacterList: CharacterListFetcher = async (
 
   url = sanitizeUrl(url)
   const resp = await axios.get(url)
+  // if(!resp) return null;
   const data = resp.data
+  // if(data!) return null;
   data.results = data.results?.map((char: Character) => {
     const [id, type] = urlToIdAndType(url)
     char.id = id
