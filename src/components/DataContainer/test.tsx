@@ -7,6 +7,7 @@ jest.mock("components/Card", () => {
 return () => <li>MockCard</li>
 })
 
+
 describe("<DataContainer/>", () => {
   it('renders successfully', () => {
     const character = createCharacter()
