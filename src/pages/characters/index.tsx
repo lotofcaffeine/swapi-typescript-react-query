@@ -1,6 +1,6 @@
 import { fetchCharacterList } from 'lib/SwApi'
 import { CharactersListPage } from 'lib/SwReactQuery'
-import Main from '../components/Main'
+import Main from '../../components/Main'
 export default function Home({ page }: { page: CharactersListPage }) {
   return (
     <div>

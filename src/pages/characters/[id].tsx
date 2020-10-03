@@ -14,7 +14,7 @@ export default function CharacterPage() {
   const router = useRouter()
   const { id } = router.query
   const [state, setState] = useState('');
-  const { isLoading, data } = useResourceQueryById<Character>(
+  const { isLoading, data , isError} = useResourceQueryById<Character>(
     state as string,
     'people', {
       enabled: !!state,
@@ -29,6 +29,11 @@ export default function CharacterPage() {
 
   if(!id){
     return null;
+  }
+
+  if(isError){
+    console.log(isError)
+   router.push("/404")
   }
 
   return (

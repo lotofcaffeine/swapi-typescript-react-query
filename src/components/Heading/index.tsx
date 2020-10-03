@@ -4,7 +4,7 @@ import * as S from './styles'
 export type LineColors = 'primary' | 'secondary'
 
 export type HeadingProps = {
-  size?: 'small' | 'medium'
+  size?: 'small' | 'medium'| 'large'
   color?: 'white' | 'black'
   lineLeft?: boolean
   lineBottom?: boolean

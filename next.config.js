@@ -6,5 +6,14 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
     disable: !isProd
-  }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/characters',
+        permanent: true,
+      },
+    ]
+  },
 })

@@ -14,7 +14,14 @@ const wrapperModifiers = {
       font-size: ${theme.font.sizes.xxxlarge};
     }
     `}
-
+  `,
+  large: (theme: DefaultTheme) => css`
+   margin-bottom: ${theme.spacings.large};
+    font-size: ${theme.font.sizes.xxlarge};
+    ${media.greaterThan('medium')`
+      font-size: ${theme.font.sizes.extralarge};
+    }
+    `}
   `,
     lineLeft: (theme: DefaultTheme, lineColor: LineColors) => css`
     padding-left: ${theme.spacings.xxsmall};
